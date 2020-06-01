@@ -26,7 +26,9 @@ iptables -t filter -A OUTPUT -o lo -j ACCEPT
 ```
 
 ### La única VM que pueda administrar el firewall vía ssh (puerto tcp 22) sea cliente-02.
+cliente-02 => 192.1168.20.2
 ```
+iptables -A INPUT -p tcp -s 192.1168.20.2/32 --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT
 ```
 
 ### La única VM que pueda navegar por internet sea cliente-03.
