@@ -1,29 +1,6 @@
 #!/bin/bash
+
 clear
-
-while true;do
-	show_menu
-
-	read -p "Selecccione una opcion: " num
-
-	case $num in
-		1) fibonacci ;;
-
-		2) reverse_num ;;
-
-		3) is_palindrome ;;
-
-		4) file_lines_length ;;
-
-		5) order_numbers ;;
-
-		6) show_files_directory ;;
-
-		7) exit_menu break ;;
-
-		8) echo "Opcion incorrecta" ;;
-	esac
-done
 
 function show_menu(){
 
@@ -74,3 +51,27 @@ function show_files_directory(){
 function exit_menu(){
 	echo "Saludos $USER"
 }
+
+while true;do
+	show_menu
+
+	read -p "Selecccione una opcion: " num
+
+	case $num in
+		1) fibonacci ;;
+
+		2) reverse_num ;;
+
+		3) is_palindrome ;;
+
+		4) file_lines_length ;;
+
+		5) order_numbers ;;
+
+		6) show_files_directory ;;
+
+		7) exit_menu break ;;
+
+		8) echo "Opcion incorrecta" ;;
+	esac
+done
