@@ -29,14 +29,20 @@ function fibonacci(){
 	done
 }
 
-function revert_num(){
+function reverse_num(){
 	read -p "Ingrese un numero a revertir: " num
 	echo $num | rev
 }
 
 function is_palindrome(){
-	read -p "Ingrese cualquier tipo de texto: " $text
-	
+	read -p "Ingrese una cadena de texto: " text
+	echo $text | rev
+	if [$(text | rev) == $text];
+	then
+		echo "Es palindromo"
+	else
+		echo "No es palindromo"
+	fi
 }
 
 function file_lines_length(){
@@ -73,8 +79,10 @@ while true;do
 
 		6) show_files_directory ;;
 
-		7) exit_menu break ;;
+		7) exit_menu
+		break;;
 
-		8) echo "Opcion incorrecta" ;;
+		*) echo "Opcion incorrecta"
 	esac
+	printf "\n\n"
 done
