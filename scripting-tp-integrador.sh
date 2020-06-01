@@ -3,7 +3,6 @@
 clear
 
 function show_menu(){
-
 	echo "Menu"
 	echo "1. Pedir un numero entero y mostrar esa cantidad de elementos de la sucesion de Fibo"
 	echo "2. Pedir un numero y mostrar por pantalla ese numero en forma invertida"
@@ -16,8 +15,8 @@ function show_menu(){
 }
 
 function fibonacci(){
-	aux1=0 #Primero de la serie
-	aux2=1 #Segundo de la serie
+	aux1=0 # First of serie
+	aux2=1 # Second of serie
 	read -p "Ingrese el numero para ver la serie: " val
 	echo "La serie es: "
 	for ((i=0; i<$val; i++))
@@ -31,30 +30,50 @@ function fibonacci(){
 
 function reverse_num(){
 	read -p "Ingrese un numero a revertir: " num
+	# rev returns the reverse of the given parameters
 	echo $num | rev
 }
 
 function is_palindrome(){
 	read -p "Ingrese una cadena de texto: " text
-	echo $text | rev
-	if [$(text | rev) == $text];
-	then
-		echo "Es palindromo"
-	else
-		echo "No es palindromo"
-	fi
+	aux=$($text | rev)
+#	echo $aux
+#	if [ $aux == $text ]
+#	then
+#		echo "Es palindromo"
+#	else
+#		echo "No es palindromo"
+#	fi
 }
 
 function file_lines_length(){
-	echo "File lines length"
+	read -p "Ingrese la ruta al archivo: " file
+	echo $(wc -l $file)
 }
 
 function order_numbers(){
 	echo "Order numbers"
+	n=""
+	# seq gives a range of numbers
+	for i in `seq 1 5`;
+	do
+		read -p "Ingrese un numero: " num
+		# Save all num in same string separate by space
+		n="${n} ${num}"
+	done
+	# tr => replace spaces with line breaks and sort -g for numeric values
+	echo $n | tr " " "\n" | sort -g
 }
 
 function show_files_directory(){
-	echo "Files in directory"
+	read -p "Ingrese un directorio: " path
+	if [ -d $path ]
+	then
+		# Find in path files of type 'regular', then sort and uniq with count
+		find $path -type f | sort | uniq -c
+	else
+		echo "El directorio no existe"
+	fi
 }
 
 function exit_menu(){
