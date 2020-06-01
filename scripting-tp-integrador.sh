@@ -40,12 +40,15 @@ function is_palindrome(){
 }
 
 function file_lines_length(){
+	echo "File lines length"
 }
 
 function order_numbers(){
+	echo "Order numbers"
 }
 
 function show_files_directory(){
+	echo "Files in directory"
 }
 
 function exit_menu(){
