@@ -2,28 +2,30 @@
 clear
 
 while true;do
-	menu()
+	show_menu
+
 	read -p "Selecccione una opcion: " num
+
 	case $num in
-		1) fibonacci() ;;
+		1) fibonacci ;;
 
-		2) reverse_num() ;;
+		2) reverse_num ;;
 
-		3) is_palindrome() ;;
+		3) is_palindrome ;;
 
-		4) file_lines_length() ;;
-		
-		5) order_numbers() ;;
-		
-		6) show_files_directory() ;;
-		
-		7) exit_menu() break ;;
-		
+		4) file_lines_length ;;
+
+		5) order_numbers ;;
+
+		6) show_files_directory ;;
+
+		7) exit_menu break ;;
+
 		8) echo "Opcion incorrecta" ;;
 	esac
 done
 
-function menu(){
+function show_menu(){
 
 	echo "Menu"
 	echo "1. Pedir un numero entero y mostrar esa cantidad de elementos de la sucesion de Fibo"
