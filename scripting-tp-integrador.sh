@@ -66,13 +66,18 @@ function order_numbers(){
 }
 
 function show_files_directory(){
-	read -p "Ingrese un directorio: " path
-	if [ -d $path ]
-	then
-		# Find in path files of type 'regular', then sort and uniq with count
-		find $path -type f | sort | uniq -c
+	read -p "Ingrese un directorio: " NOMBRE_DIR
+	if [ -d "$NOMBRE_DIR" ]; then
+		cd "$NOMBRE_DIR"
+		echo "Archivos regulares: " `find . -maxdepth 1 -type f|wc -l`
+		echo "Directorios: " `find . -maxdepth 1 -type d|wc -l`
+		echo "Link simbólicos: " `find . -maxdepth 1 -type l|wc -l`
+		echo "Pipes: " `find . -maxdepth 1 -type p|wc -l`
+		echo "Archivos de caracteres: " `find . -maxdepth 1 -type c|wc -l`
+		echo "Archivos de bloque: " `find . -maxdepth 1 -type b|wc -l`
+		echo "Sockets: " `find . -maxdepth 1 -type s|wc -l`
 	else
-		echo "El directorio no existe"
+		echo "No existe directorio"
 	fi
 }
 
