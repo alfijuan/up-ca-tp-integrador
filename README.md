@@ -40,3 +40,11 @@ iptables -A FOWARD -i eth1 -p tcp -m multiport --sport 53,80,443 -m state --stat
 ### La única VM de la red 192.168.20.0/24 que pueda ingresar al web server de la red 10.0 sea cliente-04.
 ```
 ```
+
+# Servidor DHCP
+Se instalo segun la [documentacion](https://servidordebian.org/es/wheezy/intranet/dhcp/server) y se agrego el subnet
+```
+subnet 192.168.20.0 netmask 255.255.255.0 {
+  range 192.168.20.101 192.168.20.110;
+}
+```
