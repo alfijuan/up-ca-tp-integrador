@@ -32,9 +32,10 @@ iptables -A INPUT -p tcp -s 192.168.20.2/32 --dport 22 -m conntrack --ctstate NE
 ```
 
 ### La única VM que pueda navegar por internet sea cliente-03.
+cliente-03 => 192.168.20.3
 ```
-iptables -A FOWARD -i eth1 -p udp -m multiport --sport 53 -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A FOWARD -i eth1 -p tcp -m multiport --sport 53,80,443 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FOWARD -s 192.168.20.3/32 -i eth1 -p udp -m multiport --sport 53 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A FOWARD -s 192.168.20.3/32 -i eth1 -p tcp -m multiport --sport 53,80,443 -m state --state ESTABLISHED,RELATED -j ACCEPT
 ```
 
 ### La única VM de la red 192.168.20.0/24 que pueda ingresar al web server de la red 10.0 sea cliente-04.
