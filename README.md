@@ -1,5 +1,12 @@
-# WebServer
-Para la instalacion del mismo, se descargaron los arhicvos de java-jdk y tomcat. Luego se descomprimieron en /opt utilizando `tar`. Se agrego al .bashrc el export para JAVA
+# Trabajo practico integrador
+Materia: **Computacion Aplicada**  
+Alumno: **Juan Cruz Alfieri**  
+Docente: **Ignacio Sanchez**  
+Cuatrimestre: **1ero 2020**  
+Legajo **94970**  
+
+## WebServer
+Para la instalacion del mismo, se descargaron los arhicvos de java-jdk y tomcat. Luego se descomprimieron en /opt utilizando `tar`. Se agrego al `.bashrc` el export para JAVA
 ```
 export JAVA_HOME=/opt/jdk1.8.0_131
 export PATH=$JAVA_HOME/bin:$PATH
@@ -7,8 +14,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 Para ver el example de Tomcat se utiizo el archivo `startup.sh` que provee el mismo.
 
-# Firewall
-## Red del firewall
+## Firewall
+### Red del firewall
 Dentro de `/etc/network/interfaces`, se declararon las siguientes redes:
 ```
 auto eth0
@@ -75,7 +82,7 @@ cliente-04 => 192.168.20.4
 -A FORWARD -d 192.168.10.3/32 -s 192.168.20.4/32 -p tcp
 ```
 
-# Servidor DHCP
+## Servidor DHCP
 Se instalo segun la [documentacion](https://servidordebian.org/es/wheezy/intranet/dhcp/server) y se agrego el subnet
 ```
 subnet 192.168.20.0 netmask 255.255.255.0 {
@@ -84,7 +91,7 @@ subnet 192.168.20.0 netmask 255.255.255.0 {
 }
 ```
 
-# LVM
+## LVM
 Para el uso de LVM se sigio la siguiente [documentacion](https://techencyclopedia.wordpress.com/2018/03/11/how-to-install-debian-8-by-manually-creating-lvm-linux-partitions/).
 ![LVM](https://raw.githubusercontent.com/alfijuan/up-ca-tp-integrador/master/lvm-client02.png)
 
