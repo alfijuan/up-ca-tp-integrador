@@ -1,4 +1,32 @@
+# WebServer
+Para la instalacion del mismo, se descargaron los arhicvos de java-jdk y tomcat. Luego se descomprimieron en /opt utilizando `tar`. Se agrego al .bashrc el export para JAVA
+```
+export JAVA_HOME=/opt/jdk1.8.0_131
+export PATH=$JAVA_HOME/bin:$PATH
+```
+
+Para ver el example de Tomcat se utiizo el archivo `startup.sh` que provee el mismo.
+
 # Firewall
+## Red del firewall
+Dentro de `/etc/network/interfaces`, se declararon las siguientes redes:
+```
+auto eth0
+iface eth0 inet static
+        address 192.168.0.37
+        netmask 255.255.255.0
+        gateway 192.168.0.1
+        
+auto eth1
+iface eth1 inet static
+        address 192.168.10.1
+        netmask 255.255.255.0
+        
+auto eth2
+iface eth2 inet static
+        address 192.168.20.1
+        netmask 255.255.255.0
+```
 
 ## Pasos
 ### El firewall deberá cargar la configuración de iptables al inicio.
@@ -37,12 +65,14 @@ cliente-03 => 192.168.20.3
 ```
 iptables -A FORWARD -s 192.168.20.3/32 -i eth1 -p udp -m multiport --sport 53 -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -s 192.168.20.3/32 -i eth1 -p tcp -m multiport --sport 53,80,443 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A POSTROUTING -t nat -s 192.168.20.3/32 -j MASQUERADE
 ```
 
 ### La única VM de la red 192.168.20.0/24 que pueda ingresar al web server de la red 10.0 sea cliente-04.
 cliente-04 => 192.168.20.4
 ```
 -A FORWARD -s 192.168.10.3/32 -d 192.168.20.4/32 -p tcp
+-A FORWARD -d 192.168.10.3/32 -s 192.168.20.4/32 -p tcp
 ```
 
 # Servidor DHCP
