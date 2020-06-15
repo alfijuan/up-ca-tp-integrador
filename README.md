@@ -42,6 +42,7 @@ iptables -A FORWARD -s 192.168.20.3/32 -i eth1 -p tcp -m multiport --sport 53,80
 ### La única VM de la red 192.168.20.0/24 que pueda ingresar al web server de la red 10.0 sea cliente-04.
 cliente-04 => 192.168.20.4
 ```
+-A FORWARD -s 192.168.10.3/32 -d 192.168.20.4/32 -p tcp
 ```
 
 # Servidor DHCP
@@ -49,5 +50,6 @@ Se instalo segun la [documentacion](https://servidordebian.org/es/wheezy/intrane
 ```
 subnet 192.168.20.0 netmask 255.255.255.0 {
   range 192.168.20.101 192.168.20.110;
+  option routers 192.168.20.1;
 }
 ```
