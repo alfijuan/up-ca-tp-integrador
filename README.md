@@ -83,3 +83,9 @@ subnet 192.168.20.0 netmask 255.255.255.0 {
   option routers 192.168.20.1;
 }
 ```
+
+# LVM
+Para el uso de LVM se sigio la siguiente [documentacion](https://techencyclopedia.wordpress.com/2018/03/11/how-to-install-debian-8-by-manually-creating-lvm-linux-partitions/).
+![LVM](https://raw.githubusercontent.com/alfijuan/up-ca-tp-integrador/master/lvm-client02.png)
+
+Se utilizo un disco fisico de 20GB en el que se creo un VG con 5 LV dentro apuntando a 5 filesystems.
